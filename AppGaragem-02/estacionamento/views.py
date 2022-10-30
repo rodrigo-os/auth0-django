@@ -19,9 +19,11 @@ def profile(request):
         'picture':auth0_user.extra_data['picture']
     }
     context={
-        'user_data':json.dumps(user_data, indent=4),
+        'user_data':user_data,
+        #'user_data':json.dumps(user_data, indent=4),
         'auth0_user':auth0_user
     }
+    
     return render(request, 'profile.html', context)
 
 def logout(request):
