@@ -1,4 +1,15 @@
 {% extends 'base.html'%}
+{% block titulo%}Home | Biblioteca{% endblock titulo%}
 {% block conteudo%}
-    <h1>Hello, Welcome to the Estante</h1>
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <h1 class="cover-heading">Bem-vindo!</h1>
+    {% if user.is_authenticated %}
+        <p class="lead">Você esta logado como <strong>{{user.first_name}} {{user.last_name}}</strong>!</p>
+        <a href="/profile" class="btn btn-sm btn-outline-info">Perfil</a>
+        <br>
+        <a href="/logout" class="btn btn-lg btn-secondary">Sair</a>
+    {% else %}
+        <a href='/login/auth0' class="btn btn-sm btn-primary">Login</a>
+    {% endif %}
+    </div>
 {% endblock conteudo%}
