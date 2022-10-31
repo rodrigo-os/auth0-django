@@ -1,33 +1,33 @@
 {% extends 'base.html'%}
 {% block titulo%}Perfil | Garagem{% endblock titulo%}
 {% block conteudo%}
+    {% load static%}
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
         <h1 class="cover-heading">Perfil</h1>
-        <div class='text-left'>
-            <img src="{{auth0_user.extra_data.picture}}" alt="..." class="rounded-circle">
+        <div class='clearfix'>
+          <div class='float-left'>
+            <img src="{{session.userinfo.picture}}" alt="..." class="rounded-circle">
+          </div>
+          <div class='float-right'>
+            <img src="{% static 'images/garagem-icon.png'%}" alt="..." class="rounded-circle" width="42.7%" height="auto">
+          </div>
         </div>
-        <br>
+        <div>
+          <p></p>
+        </div>
         <div class="card text-dark text-left" style='padding:10px'>
             <div>
                 <div>
-                    {% for chave, valor in user_data.items %} 
-                        {% if chave == 'name'%}
-                            <h4 class=>Usuário: <strong>{{valor}}</strong></h4>
-                        {%endif%}
-                    {% endfor %}
+                  <h4 class='text-center'>Logado como <strong>{{session.userinfo.name}}</strong></h4>
                 </div>
                 <div>
-                    {% for chave, valor in user_data.items%}
-                        {% if chave == 'user_id'%}
-                            <h4>Uid: <strong>{{valor}}</strong></h4>
-                        {%endif%}
-                    {% endfor%}
+                  <div><pre>{{pretty}}</pre></div>
                 </div>
             </div>
         </div>
-        <BR>
+        <p></p>
         <a href="/" class="btn btn-sm btn-outline-info">Home</a>
-        <br>
+        <p></p>
         <a href="/logout" class="btn btn-lg btn-secondary">Sair</a>
     </div>
 {% endblock conteudo%}
