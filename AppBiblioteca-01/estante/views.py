@@ -27,7 +27,6 @@ oauth.register(
 )
 
 def home(request):
-    print(f'Testeeeeeeeeeeeee: {session}')
     if not session:
         return render(request, 'home.html')
     else:
